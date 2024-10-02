@@ -2,16 +2,15 @@
 using namespace std;
 //—оздать класс дл€ работы с матрицами.
 //ѕредусмотреть, как минимум, функции дл€ сложени€ матриц, умножени€ матриц, транспонировани€ матриц, присваивани€ матриц друг другу(конструктор копировани€), установка и получение произвольного элемента матрицы(доступ через индексы).
-
+template <class T>
 class Matrix
 {
-	int** ptr;
+	T ptr;
 	int str; // строки
 	int st; //столбцы
 public: 
 	// конструктор копировани€
 	// установка и получение произвольного элемента матрицы(доступ через индексы).
-
 	Matrix()
 	{
 		ptr = nullptr;
@@ -21,7 +20,7 @@ public:
 	{
 		str = _str;
 		st = _st;
-		ptr = new int* [str];
+		ptr = new T* [str];
 
 		for (int i = 0; i < str; i++)
 		{
@@ -59,17 +58,24 @@ public:
 		delete[] ptr;
 		cout << "Destructor\n";
 	}
-
+	
+	Matrix(const Matrix<T>& other);
 };
 
+template <typename T>
+Matrix<T>::Matrix(const Matrix<T>& other) {
+	str = other.str;
+	st = other.st;
+	ptr = new T * [str];
+	for (int i = 0; i < str; i++) {
+		ptr[i] = new T[st];
+		for (int j = 0; j < st; j++) {
+			ptr[i][j] = other.ptr[i][j];
+		}
+	}
+}
 int main()
 {
-	Matrix obj1(3, 5);
-	obj1.Input();
-	obj1.Print();
-
-	Matrix obj2(5, 10);
-	obj2.Input();
-	obj2.Print();
+	
 
 }
