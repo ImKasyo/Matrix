@@ -91,6 +91,19 @@ public:
 		return result;
 	}
 
+	Matrix<T> operator*(const Matrix<T>& other) {
+		Matrix<T> result(str, other.st);
+		for (int i = 0; i < str; i++) {
+			for (int j = 0; j < other.st; j++) {
+				result.ptr[i][j] = 0;
+				for (int k = 0; k < st; k++) {
+					result.ptr[i][j] += ptr[i][k] * other.ptr[k][j];
+				}
+			}
+		}
+		return result;
+	}
+
 	T getEl(int i, int j) const {
 		return ptr[i][j];
 	}
