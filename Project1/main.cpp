@@ -5,7 +5,7 @@ using namespace std;
 template <class T>
 class Matrix
 {
-	T ptr;
+	T** ptr;
 	int str; // строки
 	int st; //столбцы
 public: 
@@ -24,7 +24,7 @@ public:
 
 		for (int i = 0; i < str; i++)
 		{
-			ptr[i] = new int[st] {0};
+			ptr[i] = new T[str] {0};
 		}
 
 	}
@@ -63,22 +63,26 @@ public:
 
 	Matrix<T>& operator=(const Matrix<T>& other) {
 		if (this != &other) {
-			for (int i = 0; i < rows; i++) {
+			for (int i = 0; i < str; i++) {
 				delete[] ptr[i];
 			}
 			delete[] ptr;
 
-			rows = other.rows;
-			cols = other.cols;
-			ptr = new T * [rows];
-			for (int i = 0; i < rows; i++) {
-				ptr[i] = new T[cols];
-				for (int j = 0; j < cols; j++) {
+			str = other.str;
+			st = other.st;
+			ptr = new T * [str];
+			for (int i = 0; i < str; i++) {
+				ptr[i] = new T[st];
+				for (int j = 0; j < st; j++) {
 					ptr[i][j] = other.ptr[i][j];
 				}
 			}
 		}
 		return *this;
+	}
+
+	T getEl(int i, int j) const {
+		return ptr[i][j];
 	}
 };
 
@@ -97,6 +101,7 @@ Matrix<T>::Matrix(const Matrix<T>& other) {
 
 int main()
 {
-	
+	Matrix<int> obj1(2, 2);
+	obj1.Print();
 
 }
