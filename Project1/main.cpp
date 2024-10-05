@@ -104,11 +104,21 @@ public:
 		return result;
 	}
 
-	T getEl(int i, int j) const {
+	T GetEl(int i, int j) const {
 		return ptr[i][j];
 	}
-	void setEl(int i, int j, T value) {
+	void SetEl(int i, int j, T value) {
 		ptr[i][j] = value;
+	}
+
+	Matrix<T> Transpose() const {
+		Matrix<T> result(st, str); // Меняем местами строки и столбцы
+		for (int i = 0; i < str; i++) {
+			for (int j = 0; j < st; j++) {
+				result.ptr[j][i] = ptr[i][j];
+			}
+		}
+		return result;
 	}
 
 };
