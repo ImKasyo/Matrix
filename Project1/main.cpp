@@ -60,6 +60,26 @@ public:
 	}
 	
 	Matrix(const Matrix<T>& other);
+
+	Matrix<T>& operator=(const Matrix<T>& other) {
+		if (this != &other) {
+			for (int i = 0; i < rows; i++) {
+				delete[] ptr[i];
+			}
+			delete[] ptr;
+
+			rows = other.rows;
+			cols = other.cols;
+			ptr = new T * [rows];
+			for (int i = 0; i < rows; i++) {
+				ptr[i] = new T[cols];
+				for (int j = 0; j < cols; j++) {
+					ptr[i][j] = other.ptr[i][j];
+				}
+			}
+		}
+		return *this;
+	}
 };
 
 template <typename T>
@@ -74,6 +94,7 @@ Matrix<T>::Matrix(const Matrix<T>& other) {
 		}
 	}
 }
+
 int main()
 {
 	
