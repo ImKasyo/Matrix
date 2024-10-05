@@ -81,12 +81,23 @@ public:
 		return *this;
 	}
 
+	Matrix<T> operator+(const Matrix<T>& other) {
+		Matrix<T> result(str, st);
+		for (int i = 0; i < str; i++) {
+			for (int j = 0; j < st; j++) {
+				result.ptr[i][j] = ptr[i][j] + other.ptr[i][j];
+			}
+		}
+		return result;
+	}
+
 	T getEl(int i, int j) const {
 		return ptr[i][j];
 	}
 	void setEl(int i, int j, T value) {
 		ptr[i][j] = value;
 	}
+
 };
 
 template <typename T>
@@ -101,6 +112,7 @@ Matrix<T>::Matrix(const Matrix<T>& other) {
 		}
 	}
 }
+
 
 int main()
 {
