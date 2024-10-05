@@ -28,7 +28,7 @@ public:
 		}
 
 	}
-	void Input()
+	void Input() const
 	{
 		for (int i = 0; i < str; i++)
 		{
@@ -81,7 +81,7 @@ public:
 		return *this;
 	}
 
-	Matrix<T> operator+(const Matrix<T>& other) {
+	Matrix<T> operator+(const Matrix<T>& other) const {
 		Matrix<T> result(str, st);
 		for (int i = 0; i < str; i++) {
 			for (int j = 0; j < st; j++) {
@@ -91,7 +91,7 @@ public:
 		return result;
 	}
 
-	Matrix<T> operator*(const Matrix<T>& other) {
+	Matrix<T> operator*(const Matrix<T>& other) const {
 		Matrix<T> result(str, other.st);
 		for (int i = 0; i < str; i++) {
 			for (int j = 0; j < other.st; j++) {
@@ -139,10 +139,10 @@ Matrix<T>::Matrix(const Matrix<T>& other) {
 
 int main()
 {
-	Matrix<int> obj1(2, 2);
+	const Matrix<int> obj1(2, 2);
 	obj1.Input();
 	obj1.Print();
-	Matrix<int> obj2(3, 3);
+	const Matrix<int> obj2(3, 3);
 	cout << endl;
 	obj2.Input();
 	obj2.Print();
