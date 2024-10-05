@@ -142,5 +142,22 @@ int main()
 	Matrix<int> obj1(2, 2);
 	obj1.Input();
 	obj1.Print();
+	Matrix<int> obj2(3, 3);
+	cout << endl;
+	obj2.Input();
+	obj2.Print();
+
+	Matrix<int> sum = obj1 + obj2;
+	cout << endl;
+	sum.Print();
+
+	Matrix<int> multi = obj1 * obj2;
+	cout << endl;
+	multi.Print();
+
+	Matrix<int> transposed = obj1.Transpose();
+	cout << endl;
+	transposed.Print();
+
 
 }
