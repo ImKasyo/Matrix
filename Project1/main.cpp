@@ -24,7 +24,7 @@ public:
 
 		for (int i = 0; i < str; i++)
 		{
-			ptr[i] = new T[str] {0};
+			ptr[i] = new T[st]();
 		}
 
 	}
@@ -84,6 +84,9 @@ public:
 	T getEl(int i, int j) const {
 		return ptr[i][j];
 	}
+	void setEl(int i, int j, T value) {
+		ptr[i][j] = value;
+	}
 };
 
 template <typename T>
@@ -102,6 +105,7 @@ Matrix<T>::Matrix(const Matrix<T>& other) {
 int main()
 {
 	Matrix<int> obj1(2, 2);
+	obj1.Input();
 	obj1.Print();
 
 }
